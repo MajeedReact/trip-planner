@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Trip planner</title>
+    </head>
+
+    <body onload="return Client.loadTrip()">
+
+        <header>
+
+            <div class="title">
+                <img id="logo" alt="logo of a plane" width="132px">
+                <div id="logo-text">Trip planner</div>
+            </div>
+            <div class="sections">
+               <ul>
+                <li>Plan trip</li>
+                <li>My trips</li>
+               </ul>
+            </div>
+
+ 
+        </header>
+
+        <main>
+            <section>
+                <form action="">
+                    <div class="trip-container">
+                    <span class="trip-header">Plan a trip</span>
+                    <img id="pin-gif" alt="gif image of a pin" width="64px">
+                </div>
+                    <div class="trip-field">
+                        <label for="city" class="trip-text">Where to?</label>
+                        <input id="city" type="text" placeholder="eg Paris, New York">
+                    </div>
+                    <p id="valid-city" class="hidden">Enter a valid city name</p>
+                    <div class="trip-field">
+                        <label for="date" class="trip-text">Choose a date</label>
+                        <input id="date" type="date" placeholder="Choose a date">
+                    </div>
+                    <input type="submit" class="plan-btn" value="Start plan" onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">
+                </form>
+                
+
+            <section>
+
+            <section class="trip-result">
+               <strong class="result-headline">My Trips</strong>
+               <div class="divider"></div>
+               <p id="not-found">Currently you have no trips, start adding one today!</p>
+            
+               <div id="trip-content" class="hidden">
+               <div class="remove">
+                <input class="remove-btn" type="button" value="X" onclick="return Client.removeTrip(event)" onsubmit="return Client.removeTrip(event)">
+            </div>
+               <div class="result-content">
+                <img id="trip-img" alt="image of the place visiting" width="300px">
+                <p id="trip-title">My trip to: Jeddah, Saudi Arabia <br> Departing: 2022-12-14</p>      
+                <p id="rem-date">Jeddah, Saudi Arabia is 2 days away</p>       
+                <p id="weather">Typical weather for arrival is: 26 Celsius  Mostly cloudy <br/> <span>Sunrise at: 6:35</span> <span>Sunset at: 15:00</span></p>     
+               </div>
+            </div>
+              
+            </section>
+        </main>
+
+        <footer>
+            <p class="dev">Majeed</p>
+            <p class="note">This project is part of Udacity FEND Nano degree program</p>
+        </footer>
+        <script>
+            // Check that service workers are supported
+            if ('serviceWorker' in navigator) {
+                // Use the window load event to keep the page load performant
+                window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/service-worker.js');
+                });
+            }
+           </script>
+    </body>
+</html>
